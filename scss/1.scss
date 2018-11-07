@@ -53,6 +53,9 @@ main{
             }
         }
     }
+.kbdwrapper>.row>.key:hover{
+    transform:scale(1.1)
+ }
 .kbdwrapper>.row>.key:hover>button{
     height: 15px;
     width: 15px;
