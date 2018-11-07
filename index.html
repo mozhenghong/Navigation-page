@@ -4,61 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态导航页</title>
     <link rel="stylesheet" href="./css/1.css">
-    <title>nav</title>
 </head>
 <body>
-    <header></header>
-    <main>
-        <div class="wrapper" id="mom"></div>
-    </main>
-    <footer></footer>
-    <script>
-        var keys = {
-            '0':['1','2','3','4','5','6','7','8','9','0'],
-            '1':['q','w','e','r','t','y','u','i','o','p'],
-            '2':['a','s','d','f','g','h','j','k','l'],
-            '3':['z','x','c','v','b','n','m'],
-            'length': '4'
-        }
-        var hash = {
-            'q':'qq.com',
-            'w':'weibo.com'
-        }
-        var hashInLocalStorage = JSON.parse(localStorage.getItem('tong')||'null')
+   <header></header>
+   <main><div class="kbdwrapper" id="main"></div></main>
+   <footer></footer> 
+   <script>
+    var keys = {
+        '0':['1','2','3','4','5','6','7','8','9','0'],
+        '1':['q','w','e','r','t','y','u','i','o','p'],
+        '2':['a','s','d','f','g','h','j','k','l'],
+        '3':['z','x','c','v','b','n','m'],
+        'length':'4'
+       }
+    var hash = {
+        '1': 'iconfont.cn', '2':'www.jianshu.com', '3': 'javascript.ruanyifeng.com', '4': undefined, '5': undefined, '6': undefined, '7': undefined, '8': undefined, '9': undefined, '0': undefined, 
+        'q':'qq.com',
+        'w':'weibo.com',
+        'e':'ele.me',
+        'r': undefined,
+        't': 'tianya.com', 
+        'y': 'youtube.com', 
+        'u': 'uc.com' , 
+        'i': 'www.iciba.com', 
+        'o': 'opera.com', 
+        'p': undefined, 
+        'a': 'alpha.wallhaven.cc', 
+        's': 'sm.ms', 
+        'd': undefined,'f': undefined,'g': 'github.com','h': undefined,'j': 'js.jirengu.com','k': undefined,'l': undefined,
+        'z': 'zhihu.com', 
+        'x': 'xiedaimala.com','c': 'css-tricks.com','v': undefined,'b':undefined ,'n':undefined ,
+        'm': 'www.mcdonalds.com.cn'
+			} 
+        var hashInLocalStorage = JSON.parse(localStorage.getItem('xxx') ||'null')
         if(hashInLocalStorage){
             hash = hashInLocalStorage
         }
-        index = 0
-        while(index<keys.length){
-            div1 = document.createElement('div')
-            mom.appendChild(div1)
-            row = keys[index]
-            index2 = 0
-            while(index2<row.length){
-                kbd1 = document.createElement('kbd')
-                div1.appendChild(kbd1)
-                kbd1.textContent = row[index2]
-                button1 = document.createElement('button')
-                kbd1.appendChild(button1)
-                button1.textContent = 'E'
-                button1.id = row[index2]
-                button1.onclick = function(yyy){
-                    key= yyy['target']['id']
-                    x =prompt('请输入想要的网址')
-                    hash[key] = x
-                    localStorage.setItem('tong',JSON.stringify(hash))
-                }
-                index2 = index2+1
+    index = 0
+    while(index<keys.length){
+        div = document.createElement('div')
+        main.appendChild(div)
+        div.className ='row'
+        index2 = 0
+        row = keys[index]
+        while(index2<row.length){
+            kbd=document.createElement('kbd')
+            div.appendChild(kbd)
+            kbd.textContent = row[index2]
+            kbd.className = 'key'
+            img=document.createElement('img')
+            kbd.appendChild(img)
+            img.src='http://'+hash[row[index2]]+'/favicon.ico'
+            img.onerror=function(z){
+                z.target.src='https://i.loli.net/2018/11/07/5be25aafd5405.png'
             }
-            index = index+1
+            button=document.createElement('button')
+            kbd.appendChild(button)
+            button.textContent = 'E'
+            button.id=row[index2]
+            button.onclick = function(y){
+                var button2=y['target']
+                var key=button2['id']
+                var x=prompt('请输入要更改的网址')
+                hash['key']=x
+                img2=button2.previousSibling
+                img2.src='http://'+x+'/favicon.ico'
+                img2.onerror=function(z){
+                z.target.src='https://i.loli.net/2018/11/07/5be25aafd5405.png'
+            }
+                localStorage.setItem('xxx',JSON.stringify(hash))
+            }
+            
+            index2 = index2+1
         }
-        document.onkeypress = function(xxx){
-            key = xxx['key']
-            website = hash[key]
-            location.href = 'http://'+ website
-            // window.open('http://'+website,'_blank')
+        document.onkeypress = function(x){
+                key = x['key']
+                window.open('http://'+hash['key']),'_blank'
         }
-    </script>
+        index = index+1
+    }
+   </script>
 </body>
 </html>
