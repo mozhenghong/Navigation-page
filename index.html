@@ -68,20 +68,21 @@
                 var button2=y['target']
                 var key=button2['id']
                 var x=prompt('请输入要更改的网址')
-                hash['key']=x
+                hash[key]=x
+                localStorage.setItem('xxx',JSON.stringify(hash))
                 img2=button2.previousSibling
                 img2.src='http://'+x+'/favicon.ico'
                 img2.onerror=function(z){
                 z.target.src='https://i.loli.net/2018/11/07/5be25aafd5405.png'
             }
-                localStorage.setItem('xxx',JSON.stringify(hash))
+               
             }
             
             index2 = index2+1
         }
         document.onkeypress = function(x){
                 key = x['key']
-                window.open('http://'+hash['key']),'_blank'
+                window.open('http://'+hash[key],'_blank')
         }
         index = index+1
     }
