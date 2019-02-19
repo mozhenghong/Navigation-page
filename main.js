@@ -91,6 +91,7 @@ function createkeyboard(keys,hash){
             kbd=tag('kbd')
             kbd.textContent = row[index2]
             kbd.className = 'key'
+            kbd.id = row[index2]
             
             createImg()
 
@@ -111,7 +112,20 @@ listenToUser(hash)
 
 function listenToUser(hash){
     document.onkeypress = function(x){
-            key = x['key']
+        key = x['key']
+        if(hash[key] === undefined){
+            alert('请先点击Ｅ按钮编辑您想要的网址')
+        }else{
             window.open('http://'+hash[key],'_blank')
+        }
+    }
+}
+
+document.onclick = function(y){
+    let key = y.target.id
+    if(hash[key] === undefined){
+        alert('请先点击Ｅ按钮编辑您想要的网址')
+    }else{
+        window.open('http://'+hash[key],'_blank')
     }
 }
