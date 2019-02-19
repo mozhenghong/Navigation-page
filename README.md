@@ -28,4 +28,6 @@
 
 6. 点击按钮右下角的 E ，弹出对话框，进行修改网址,修改完成，左下角出现网站图标
 ## 预览图
-![](https://upload-images.jianshu.io/upload_images/14473072-fb9322ac62b380be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- ![](https://upload-images.jianshu.io/upload_images/14473072-c65e6c9f48722085.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
