@@ -132,23 +132,22 @@ baidu.addEventListener('click', () => {
 //监听用户键盘事件
     document.addEventListener('keyup',(x) => {
         key = x['key']
-        if(hash[key] !== undefined){
+        if(hash[key] !== undefined && hash[key] !== ''){
             window.open('http://'+hash[key],'_blank')
+        }else{
+            alert('请先点击Ｅ按钮编辑网站')
         }
     })
+
 //监听鼠标点击事件
-// document.onclick = function(y){
-//     let key = y.target.id
-//     if(hash[key] !== undefined){
-//         window.open('http://'+hash[key],'_blank')
-//     }
-// }
 let k = document.getElementsByTagName('kbd')
 for(let i = 0; i<k.length; i++){
     k[i].addEventListener('click',(y) => {
         let key = y.target.id
-        if(hash[key] !== undefined){
+        if(hash[key] !== undefined && hash[key] !== ''){
         window.open('http://'+hash[key],'_blank')
-    }
+        }else{
+            alert('请先点击Ｅ按钮编辑网站')
+        }
     })
 }
