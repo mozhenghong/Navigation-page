@@ -106,26 +106,49 @@ function createkeyboard(keys,hash){
         index = index+1
     }
 }
+//顶部搜索框
 
+let search = document.getElementById('search')
+let google = document.getElementById('google')
+let baidu = document.getElementById('baidu')
+search.addEventListener('keyup', (e) => {
+    e.stopPropagation()
+    if(event.keyCode === 13){
+        let searchContent = search.value
+        window.open('http://www.google.com/search?q=' + searchContent, '_blank')
+        search.value = ''
+    }
+})
+google.addEventListener('click',() => {
+    let searchContent = search.value
+    window.open('http://www.google.com/search?q=' + searchContent, '_blank')
+    search.value = ''
+})
+baidu.addEventListener('click', () => {
+    let searchContent = search.value
+    window.open('http://www.baidu.com/s?wd=' + searchContent, '_blank')
+    search.value = ''
+})
 //监听用户键盘事件
-listenToUser(hash)
-
-function listenToUser(hash){
-    document.onkeypress = function(x){
+    document.addEventListener('keyup',(x) => {
         key = x['key']
-        if(hash[key] === undefined){
-            alert('请先点击Ｅ按钮编辑您想要的网址')
-        }else{
+        if(hash[key] !== undefined){
             window.open('http://'+hash[key],'_blank')
         }
-    }
-}
-
-document.onclick = function(y){
-    let key = y.target.id
-    if(hash[key] === undefined){
-        alert('请先点击Ｅ按钮编辑您想要的网址')
-    }else{
+    })
+//监听鼠标点击事件
+// document.onclick = function(y){
+//     let key = y.target.id
+//     if(hash[key] !== undefined){
+//         window.open('http://'+hash[key],'_blank')
+//     }
+// }
+let k = document.getElementsByTagName('kbd')
+for(let i = 0; i<k.length; i++){
+    k[i].addEventListener('click',(y) => {
+        let key = y.target.id
+        if(hash[key] !== undefined){
         window.open('http://'+hash[key],'_blank')
     }
+    })
 }
